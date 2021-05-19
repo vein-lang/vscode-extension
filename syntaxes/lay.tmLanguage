@@ -3,15 +3,15 @@
 <plist version="1.0">
   <dict>
     <key>scopeName</key>
-    <string>source.wave.il</string>
+    <string>source.mana.il</string>
     <key>uuid</key>
     <string>19235ffd-7ef3-454e-916e-8771e38d9560</string>
     <key>fileTypes</key>
     <array>
-      <string>wvil</string>
+      <string>lay</string>
     </array>
     <key>name</key>
-    <string>Wave IL Language</string>
+    <string>Mana IL Language</string>
     <key>patterns</key>
     <array>
       <dict>
@@ -89,7 +89,7 @@
         <array>
           <dict>
             <key>name</key>
-            <string>comment.line.double-slash.documentation.wave</string>
+            <string>comment.line.double-slash.documentation.mana</string>
             <key>begin</key>
             <string>(?:^)(?&gt;\s*)(\/\/[!\/]+)</string>
             <key>beginCaptures</key>
@@ -97,7 +97,7 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>punctuation.definition.comment.documentation.wave</string>
+                <string>punctuation.definition.comment.documentation.mana</string>
               </dict>
             </dict>
             <key>end</key>
@@ -118,20 +118,20 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>punctuation.definition.comment.begin.documentation.wave</string>
+                <string>punctuation.definition.comment.begin.documentation.mana</string>
               </dict>
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>punctuation.definition.comment.end.documentation.wave</string>
+                <string>punctuation.definition.comment.end.documentation.mana</string>
               </dict>
             </dict>
             <key>name</key>
-            <string>comment.block.documentation.wave</string>
+            <string>comment.block.documentation.mana</string>
           </dict>
           <dict>
             <key>name</key>
-            <string>comment.block.documentation.wave</string>
+            <string>comment.block.documentation.mana</string>
             <key>begin</key>
             <string>((?&gt;\s*)\/\*[!*]+(?:(?:\n|$)|(?=\s)))</string>
             <key>beginCaptures</key>
@@ -139,7 +139,7 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>punctuation.definition.comment.begin.documentation.wave</string>
+                <string>punctuation.definition.comment.begin.documentation.mana</string>
               </dict>
             </dict>
             <key>end</key>
@@ -149,7 +149,7 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>punctuation.definition.comment.end.documentation.wave</string>
+                <string>punctuation.definition.comment.end.documentation.mana</string>
               </dict>
             </dict>
           </dict>
@@ -165,11 +165,11 @@
               </dict>
             </dict>
             <key>name</key>
-            <string>comment.block.banner.wave</string>
+            <string>comment.block.banner.mana</string>
           </dict>
           <dict>
             <key>name</key>
-            <string>comment.block.wave</string>
+            <string>comment.block.mana</string>
             <key>begin</key>
             <string>(\/\*)</string>
             <key>beginCaptures</key>
@@ -177,7 +177,7 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>punctuation.definition.comment.begin.wave</string>
+                <string>punctuation.definition.comment.begin.mana</string>
               </dict>
             </dict>
             <key>end</key>
@@ -187,7 +187,7 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>punctuation.definition.comment.end.wave</string>
+                <string>punctuation.definition.comment.end.mana</string>
               </dict>
             </dict>
           </dict>
@@ -199,11 +199,11 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>meta.toc-list.banner.line.wave</string>
+                <string>meta.toc-list.banner.line.mana</string>
               </dict>
             </dict>
             <key>name</key>
-            <string>comment.line.banner.wave</string>
+            <string>comment.line.banner.mana</string>
           </dict>
           <dict>
             <key>begin</key>
@@ -213,7 +213,7 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>punctuation.whitespace.comment.leading.wave</string>
+                <string>punctuation.whitespace.comment.leading.mana</string>
               </dict>
             </dict>
             <key>end</key>
@@ -230,13 +230,13 @@
           <key>1</key>
           <dict>
             <key>name</key>
-            <string>punctuation.separator.hash.wave</string>
+            <string>punctuation.separator.hash.mana</string>
           </dict>
         </dict>
         <key>end</key>
         <string>(?=(?://|/\*))|(?&lt;!\\)(?=\n)</string>
         <key>name</key>
-        <string>meta.preprocessor.wave</string>
+        <string>meta.preprocessor.mana</string>
       </dict>
       <key>operators</key>
       <dict>
@@ -246,67 +246,67 @@
             <key>match</key>
             <string>(?&lt;![\w$])(sizeof)(?![\w$])</string>
             <key>name</key>
-            <string>keyword.operator.sizeof.wave</string>
+            <string>keyword.operator.sizeof.mana</string>
           </dict>
           <dict>
             <key>match</key>
             <string>--</string>
             <key>name</key>
-            <string>keyword.operator.decrement.wave</string>
+            <string>keyword.operator.decrement.mana</string>
           </dict>
           <dict>
             <key>match</key>
             <string>\+\+</string>
             <key>name</key>
-            <string>keyword.operator.increment.wave</string>
+            <string>keyword.operator.increment.mana</string>
           </dict>
           <dict>
             <key>match</key>
             <string>%=|\+=|-=|\*=|(?&lt;!\()/=</string>
             <key>name</key>
-            <string>keyword.operator.assignment.compound.wave</string>
+            <string>keyword.operator.assignment.compound.mana</string>
           </dict>
           <dict>
             <key>match</key>
             <string>&amp;=|\^=|&lt;&lt;=|&gt;&gt;=|\|=</string>
             <key>name</key>
-            <string>keyword.operator.assignment.compound.bitwise.wave</string>
+            <string>keyword.operator.assignment.compound.bitwise.mana</string>
           </dict>
           <dict>
             <key>match</key>
             <string>&lt;&lt;|&gt;&gt;</string>
             <key>name</key>
-            <string>keyword.operator.bitwise.shift.wave</string>
+            <string>keyword.operator.bitwise.shift.mana</string>
           </dict>
           <dict>
             <key>match</key>
             <string>!=|&lt;=|&gt;=|==|&lt;|&gt;</string>
             <key>name</key>
-            <string>keyword.operator.comparison.wave</string>
+            <string>keyword.operator.comparison.mana</string>
           </dict>
           <dict>
             <key>match</key>
             <string>&amp;&amp;|!|\|\|</string>
             <key>name</key>
-            <string>keyword.operator.logical.wave</string>
+            <string>keyword.operator.logical.mana</string>
           </dict>
           <dict>
             <key>match</key>
             <string>&amp;|\||\^|~</string>
             <key>name</key>
-            <string>keyword.operator.wave</string>
+            <string>keyword.operator.mana</string>
           </dict>
           <dict>
             <key>match</key>
             <string>=</string>
             <key>name</key>
-            <string>keyword.operator.assignment.wave</string>
+            <string>keyword.operator.assignment.mana</string>
           </dict>
           <dict>
             <key>match</key>
             <string>%|\*|/|-|\+</string>
             <key>name</key>
-            <string>keyword.operator.wave</string>
+            <string>keyword.operator.mana</string>
           </dict>
         </array>
       </dict>
@@ -316,13 +316,13 @@
         <array>
           <dict>
             <key>name</key>
-            <string>keyword.control.wave</string>
+            <string>keyword.control.mana</string>
             <key>match</key>
             <string>\.\b(dep|string|global|this|table|s|t|f|method|base|using|field|auto|const|body|as|namespace|module|class)\b</string>
           </dict>
           <dict>
             <key>name</key>
-            <string>keyword.control.core.wave</string>
+            <string>keyword.control.core.mana</string>
             <key>match</key>
             <string>\.\b(size|maxstack|locals)\b</string>
           </dict>
@@ -358,7 +358,7 @@
             <key>match</key>
             <string>(?i)(as|byte|float|double|bool|string|void|([ui|i](nt16|nt32|nt64)))\b</string>
             <key>name</key>
-            <string>support.type.wave</string>
+            <string>support.type.mana</string>
           </dict>
           <dict>
             <key>match</key>
@@ -371,28 +371,28 @@
       <key>punctuation-hash</key>
       <dict>
         <key>name</key>
-        <string>punctuation.separator.hash.wave</string>
+        <string>punctuation.separator.hash.mana</string>
         <key>match</key>
         <string>#</string>
       </dict>
       <key>punctuation-comma</key>
       <dict>
         <key>name</key>
-        <string>punctuation.separator.comma.wave</string>
+        <string>punctuation.separator.comma.mana</string>
         <key>match</key>
         <string>,</string>
       </dict>
       <key>punctuation-semicolon</key>
       <dict>
         <key>name</key>
-        <string>punctuation.terminator.statement.wave</string>
+        <string>punctuation.terminator.statement.mana</string>
         <key>match</key>
         <string>;</string>
       </dict>
       <key>punctuation-accessor</key>
       <dict>
         <key>name</key>
-        <string>punctuation.accessor.wave</string>
+        <string>punctuation.accessor.mana</string>
         <key>match</key>
         <string>\.</string>
       </dict>
@@ -408,12 +408,12 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>entity.name.type.alias.wave</string>
+                <string>entity.name.type.alias.mana</string>
               </dict>
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>punctuation.separator.coloncolon.wave</string>
+                <string>punctuation.separator.coloncolon.mana</string>
               </dict>
             </dict>
           </dict>
@@ -425,12 +425,12 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>storage.type.wave</string>
+                <string>storage.type.mana</string>
               </dict>
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>punctuation.accessor.wave</string>
+                <string>punctuation.accessor.mana</string>
               </dict>
             </dict>
           </dict>
@@ -442,18 +442,18 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>punctuation.accessor.wave</string>
+                <string>punctuation.accessor.mana</string>
               </dict>
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>storage.type.wave</string>
+                <string>storage.type.mana</string>
               </dict>
             </dict>
           </dict>
           <dict>
             <key>name</key>
-            <string>storage.type.wave</string>
+            <string>storage.type.mana</string>
             <key>match</key>
             <string>@?[_[:alpha:]][_[:alnum:]]*</string>
           </dict>
@@ -468,7 +468,7 @@
           <key>0</key>
           <dict>
             <key>name</key>
-            <string>punctuation.definition.typeparameters.begin.wave</string>
+            <string>punctuation.definition.typeparameters.begin.mana</string>
           </dict>
         </dict>
         <key>end</key>
@@ -478,7 +478,7 @@
           <key>0</key>
           <dict>
             <key>name</key>
-            <string>punctuation.definition.typeparameters.end.wave</string>
+            <string>punctuation.definition.typeparameters.end.mana</string>
           </dict>
         </dict>
         <key>patterns</key>
@@ -509,7 +509,7 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>constant.character.escape.line-continuation.wave</string>
+                <string>constant.character.escape.line-continuation.mana</string>
               </dict>
             </dict>
           </dict>
@@ -527,7 +527,7 @@ x[a-fA-F0-9]{,2} |
 u[a-fA-F0-9]{,4} |
 U[a-fA-F0-9]{,8} )</string>
         <key>name</key>
-        <string>constant.character.escape.wave</string>
+        <string>constant.character.escape.mana</string>
       </dict>
       <key>strings</key>
       <dict>
@@ -541,7 +541,7 @@ U[a-fA-F0-9]{,8} )</string>
               <key>0</key>
               <dict>
                 <key>name</key>
-                <string>punctuation.definition.string.begin.wave</string>
+                <string>punctuation.definition.string.begin.mana</string>
               </dict>
             </dict>
             <key>end</key>
@@ -551,11 +551,11 @@ U[a-fA-F0-9]{,8} )</string>
               <key>0</key>
               <dict>
                 <key>name</key>
-                <string>punctuation.definition.string.end.wave</string>
+                <string>punctuation.definition.string.end.mana</string>
               </dict>
             </dict>
             <key>name</key>
-            <string>string.quoted.double.wave</string>
+            <string>string.quoted.double.mana</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -580,7 +580,7 @@ U[a-fA-F0-9]{,8} )</string>
               <key>0</key>
               <dict>
                 <key>name</key>
-                <string>punctuation.definition.string.begin.wave</string>
+                <string>punctuation.definition.string.begin.mana</string>
               </dict>
             </dict>
             <key>end</key>
@@ -590,11 +590,11 @@ U[a-fA-F0-9]{,8} )</string>
               <key>0</key>
               <dict>
                 <key>name</key>
-                <string>punctuation.definition.string.end.wave</string>
+                <string>punctuation.definition.string.end.mana</string>
               </dict>
             </dict>
             <key>name</key>
-            <string>string.quoted.single.wave</string>
+            <string>string.quoted.single.mana</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -612,7 +612,7 @@ U[a-fA-F0-9]{,8} )</string>
       <key>interpolated-string</key>
       <dict>
         <key>name</key>
-        <string>string.quoted.double.wave</string>
+        <string>string.quoted.double.mana</string>
         <key>begin</key>
         <string>\$"</string>
         <key>beginCaptures</key>
@@ -620,7 +620,7 @@ U[a-fA-F0-9]{,8} )</string>
           <key>0</key>
           <dict>
             <key>name</key>
-            <string>punctuation.definition.string.begin.wave</string>
+            <string>punctuation.definition.string.begin.mana</string>
           </dict>
         </dict>
         <key>end</key>
@@ -630,12 +630,12 @@ U[a-fA-F0-9]{,8} )</string>
           <key>1</key>
           <dict>
             <key>name</key>
-            <string>punctuation.definition.string.end.wave</string>
+            <string>punctuation.definition.string.end.mana</string>
           </dict>
           <key>2</key>
           <dict>
             <key>name</key>
-            <string>invalid.illegal.newline.wave</string>
+            <string>invalid.illegal.newline.mana</string>
           </dict>
         </dict>
         <key>patterns</key>
@@ -653,7 +653,7 @@ U[a-fA-F0-9]{,8} )</string>
       <key>interpolation</key>
       <dict>
         <key>name</key>
-        <string>meta.interpolation.wave</string>
+        <string>meta.interpolation.mana</string>
         <key>begin</key>
         <string>(?&lt;=[^\{]|^)((?:\{\{)*)(\{)(?=[^\{])</string>
         <key>beginCaptures</key>
@@ -661,12 +661,12 @@ U[a-fA-F0-9]{,8} )</string>
           <key>1</key>
           <dict>
             <key>name</key>
-            <string>string.quoted.double.wave</string>
+            <string>string.quoted.double.mana</string>
           </dict>
           <key>2</key>
           <dict>
             <key>name</key>
-            <string>punctuation.definition.interpolation.begin.wave</string>
+            <string>punctuation.definition.interpolation.begin.mana</string>
           </dict>
         </dict>
         <key>end</key>
@@ -676,7 +676,7 @@ U[a-fA-F0-9]{,8} )</string>
           <key>0</key>
           <dict>
             <key>name</key>
-            <string>punctuation.definition.interpolation.end.wave</string>
+            <string>punctuation.definition.interpolation.end.mana</string>
           </dict>
         </dict>
         <key>patterns</key>
@@ -704,7 +704,7 @@ U[a-fA-F0-9]{,8} )</string>
       <key>identifier</key>
       <dict>
         <key>name</key>
-        <string>variable.other.readwrite.wave</string>
+        <string>variable.other.readwrite.mana</string>
         <key>match</key>
         <string>@?[_[:alpha:]][_[:alnum:]]*</string>
       </dict>
@@ -748,13 +748,13 @@ U[a-fA-F0-9]{,8} )</string>
         <array>
           <dict>
             <key>name</key>
-            <string>constant.language.boolean.true.wave</string>
+            <string>constant.language.boolean.true.mana</string>
             <key>match</key>
             <string>(?&lt;!\.)\btrue\b</string>
           </dict>
           <dict>
             <key>name</key>
-            <string>constant.language.boolean.false.wave</string>
+            <string>constant.language.boolean.false.mana</string>
             <key>match</key>
             <string>(?&lt;!\.)\bfalse\b</string>
           </dict>
@@ -763,14 +763,14 @@ U[a-fA-F0-9]{,8} )</string>
       <key>null-literal</key>
       <dict>
         <key>name</key>
-        <string>constant.language.null.wave</string>
+        <string>constant.language.null.mana</string>
         <key>match</key>
         <string>(?&lt;!\.)\bnull\b</string>
       </dict>
       <key>opcodes-literal</key>
       <dict>
         <key>name</key>
-        <string>constant.numeric.decimal.wave</string>
+        <string>constant.numeric.decimal.mana</string>
         <key>match</key>
         <string>\..+(\s|\')$</string>
       </dict>
@@ -780,31 +780,31 @@ U[a-fA-F0-9]{,8} )</string>
         <array>
           <dict>
             <key>name</key>
-            <string>constant.numeric.hex.wave</string>
+            <string>constant.numeric.hex.mana</string>
             <key>match</key>
             <string>\b0(x|X)[0-9a-fA-F_]+(U|u|L|l|UL|Ul|uL|ul|LU|Lu|lU|lu)?\b</string>
           </dict>
           <dict>
             <key>name</key>
-            <string>constant.numeric.binary.wave</string>
+            <string>constant.numeric.binary.mana</string>
             <key>match</key>
             <string>\b0(b|B)[01_]+(U|u|L|l|UL|Ul|uL|ul|LU|Lu|lU|lu)?\b</string>
           </dict>
           <dict>
             <key>name</key>
-            <string>constant.numeric.decimal.wave</string>
+            <string>constant.numeric.decimal.mana</string>
             <key>match</key>
             <string>\b([0-9_]+)?\.[0-9_]+((e|E)[0-9]+)?(F|f|D|d|M|m)?\b</string>
           </dict>
           <dict>
             <key>name</key>
-            <string>constant.numeric.decimal.wave</string>
+            <string>constant.numeric.decimal.mana</string>
             <key>match</key>
             <string>\b[0-9_]+(e|E)[0-9_]+(F|f|D|d|M|m)?\b</string>
           </dict>
           <dict>
             <key>name</key>
-            <string>constant.numeric.decimal.wave</string>
+            <string>constant.numeric.decimal.mana</string>
             <key>match</key>
             <string>\b[0-9_]+(F|f|D|d|M|m)\b</string>
           </dict>
@@ -813,7 +813,7 @@ U[a-fA-F0-9]{,8} )</string>
       <key>char-literal</key>
       <dict>
         <key>name</key>
-        <string>string.quoted.single.wave</string>
+        <string>string.quoted.single.mana</string>
         <key>begin</key>
         <string>'</string>
         <key>beginCaptures</key>
@@ -821,7 +821,7 @@ U[a-fA-F0-9]{,8} )</string>
           <key>0</key>
           <dict>
             <key>name</key>
-            <string>punctuation.definition.char.begin.wave</string>
+            <string>punctuation.definition.char.begin.mana</string>
           </dict>
         </dict>
         <key>end</key>
@@ -831,12 +831,12 @@ U[a-fA-F0-9]{,8} )</string>
           <key>1</key>
           <dict>
             <key>name</key>
-            <string>punctuation.definition.char.end.wave</string>
+            <string>punctuation.definition.char.end.mana</string>
           </dict>
           <key>2</key>
           <dict>
             <key>name</key>
-            <string>invalid.illegal.newline.wave</string>
+            <string>invalid.illegal.newline.mana</string>
           </dict>
         </dict>
         <key>patterns</key>
@@ -850,14 +850,14 @@ U[a-fA-F0-9]{,8} )</string>
       <key>char-character-escape</key>
       <dict>
         <key>name</key>
-        <string>constant.character.escape.wave</string>
+        <string>constant.character.escape.mana</string>
         <key>match</key>
         <string>\\(['"\\0abfnrtv]|x[0-9a-fA-F]{1,4}|u[0-9a-fA-F]{4})</string>
       </dict>
       <key>string-literal</key>
       <dict>
         <key>name</key>
-        <string>string.quoted.double.wave</string>
+        <string>string.quoted.double.mana</string>
         <key>begin</key>
         <string>(?&lt;!@)"</string>
         <key>beginCaptures</key>
@@ -865,7 +865,7 @@ U[a-fA-F0-9]{,8} )</string>
           <key>0</key>
           <dict>
             <key>name</key>
-            <string>punctuation.definition.string.begin.wave</string>
+            <string>punctuation.definition.string.begin.mana</string>
           </dict>
         </dict>
         <key>end</key>
@@ -875,12 +875,12 @@ U[a-fA-F0-9]{,8} )</string>
           <key>1</key>
           <dict>
             <key>name</key>
-            <string>punctuation.definition.string.end.wave</string>
+            <string>punctuation.definition.string.end.mana</string>
           </dict>
           <key>2</key>
           <dict>
             <key>name</key>
-            <string>invalid.illegal.newline.wave</string>
+            <string>invalid.illegal.newline.mana</string>
           </dict>
         </dict>
         <key>patterns</key>
@@ -894,14 +894,14 @@ U[a-fA-F0-9]{,8} )</string>
       <key>string-character-escape</key>
       <dict>
         <key>name</key>
-        <string>constant.character.escape.wave</string>
+        <string>constant.character.escape.mana</string>
         <key>match</key>
         <string>\\(['"\\0abfnrtv]|x[0-9a-fA-F]{1,4}|U[0-9a-fA-F]{8}|u[0-9a-fA-F]{4})</string>
       </dict>
       <key>type</key>
       <dict>
         <key>name</key>
-        <string>meta.type.wave</string>
+        <string>meta.type.mana</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -943,12 +943,12 @@ U[a-fA-F0-9]{,8} )</string>
           <key>1</key>
           <dict>
             <key>name</key>
-            <string>keyword.control.wave</string>
+            <string>keyword.control.mana</string>
           </dict>
           <key>2</key>
           <dict>
             <key>name</key>
-            <string>entity.name.function.wave</string>
+            <string>entity.name.function.mana</string>
           </dict>
         </dict>
         <key>end</key>
@@ -1006,7 +1006,7 @@ U[a-fA-F0-9]{,8} )</string>
           <key>8</key>
           <dict>
             <key>name</key>
-            <string>entity.name.function.wave</string>
+            <string>entity.name.function.mana</string>
           </dict>
           <key>9</key>
           <dict>
@@ -1064,7 +1064,7 @@ U[a-fA-F0-9]{,8} )</string>
           <key>6</key>
           <dict>
             <key>name</key>
-            <string>entity.name.variable.field.wave</string>
+            <string>entity.name.variable.field.mana</string>
           </dict>
         </dict>
         <key>end</key>
@@ -1073,7 +1073,7 @@ U[a-fA-F0-9]{,8} )</string>
         <array>
           <dict>
             <key>name</key>
-            <string>entity.name.variable.field.wave</string>
+            <string>entity.name.variable.field.mana</string>
             <key>match</key>
             <string>@?[_[:alpha:]][_[:alnum:]]*</string>
           </dict>
@@ -1104,7 +1104,7 @@ U[a-fA-F0-9]{,8} )</string>
           <key>0</key>
           <dict>
             <key>name</key>
-            <string>punctuation.parenthesis.open.wave</string>
+            <string>punctuation.parenthesis.open.mana</string>
           </dict>
         </dict>
         <key>end</key>
@@ -1114,7 +1114,7 @@ U[a-fA-F0-9]{,8} )</string>
           <key>0</key>
           <dict>
             <key>name</key>
-            <string>punctuation.parenthesis.close.wave</string>
+            <string>punctuation.parenthesis.close.mana</string>
           </dict>
         </dict>
         <key>patterns</key>
@@ -1138,7 +1138,7 @@ U[a-fA-F0-9]{,8} )</string>
           <key>1</key>
           <dict>
             <key>name</key>
-            <string>keyword.other.var.wave</string>
+            <string>keyword.other.var.mana</string>
           </dict>
           <key>2</key>
           <dict>
@@ -1153,7 +1153,7 @@ U[a-fA-F0-9]{,8} )</string>
           <key>7</key>
           <dict>
             <key>name</key>
-            <string>entity.name.variable.local.wave</string>
+            <string>entity.name.variable.local.mana</string>
           </dict>
         </dict>
       </dict>
@@ -1163,7 +1163,7 @@ U[a-fA-F0-9]{,8} )</string>
         <array>
           <dict>
             <key>name</key>
-            <string>storage.modifier.wave</string>
+            <string>storage.modifier.mana</string>
             <key>match</key>
             <string>\b(ref|out|in)\b</string>
           </dict>
@@ -1182,7 +1182,7 @@ U[a-fA-F0-9]{,8} )</string>
           <key>0</key>
           <dict>
             <key>name</key>
-            <string>punctuation.parenthesis.open.wave</string>
+            <string>punctuation.parenthesis.open.mana</string>
           </dict>
         </dict>
         <key>end</key>
@@ -1192,7 +1192,7 @@ U[a-fA-F0-9]{,8} )</string>
           <key>0</key>
           <dict>
             <key>name</key>
-            <string>punctuation.parenthesis.close.wave</string>
+            <string>punctuation.parenthesis.close.mana</string>
           </dict>
         </dict>
         <key>patterns</key>
@@ -1222,7 +1222,7 @@ U[a-fA-F0-9]{,8} )</string>
       <key>gc-modifier</key>
       <dict>
         <key>name</key>
-        <string>entity.operation.gc.wave</string>
+        <string>entity.operation.gc.mana</string>
         <key>match</key>
         <string>(?x)(gc)\s+(((nocontrol|auto)\;))</string>
         <key>beginCaptures</key>
@@ -1230,19 +1230,19 @@ U[a-fA-F0-9]{,8} )</string>
           <key>1</key>
           <dict>
             <key>name</key>
-            <string>keyword.control.gc.wave</string>
+            <string>keyword.control.gc.mana</string>
           </dict>
           <key>4</key>
           <dict>
             <key>name</key>
-            <string>keyword.control.gc.wave</string>
+            <string>keyword.control.gc.mana</string>
           </dict>
         </dict>
       </dict>
       <key>sync-modifier</key>
       <dict>
         <key>name</key>
-        <string>entity.operation.sync.wave</string>
+        <string>entity.operation.sync.mana</string>
         <key>match</key>
         <string>(?x)(sync)\s+(((nocontrol|auto|inheritable)\;)|\{)</string>
         <key>beginCaptures</key>
@@ -1250,12 +1250,12 @@ U[a-fA-F0-9]{,8} )</string>
           <key>1</key>
           <dict>
             <key>name</key>
-            <string>keyword.control.sync.wave</string>
+            <string>keyword.control.sync.mana</string>
           </dict>
           <key>4</key>
           <dict>
             <key>name</key>
-            <string>keyword.control.sync.wave</string>
+            <string>keyword.control.sync.mana</string>
           </dict>
         </dict>
       </dict>
@@ -1268,7 +1268,7 @@ U[a-fA-F0-9]{,8} )</string>
           <key>1</key>
           <dict>
             <key>name</key>
-            <string>keyword.control.body.wave</string>
+            <string>keyword.control.body.mana</string>
           </dict>
         </dict>
         <key>end</key>
@@ -1283,7 +1283,7 @@ U[a-fA-F0-9]{,8} )</string>
               <key>0</key>
               <dict>
                 <key>name</key>
-                <string>punctuation.curlybrace.open.wave</string>
+                <string>punctuation.curlybrace.open.mana</string>
               </dict>
             </dict>
             <key>end</key>
@@ -1293,7 +1293,7 @@ U[a-fA-F0-9]{,8} )</string>
               <key>0</key>
               <dict>
                 <key>name</key>
-                <string>punctuation.curlybrace.close.wave</string>
+                <string>punctuation.curlybrace.close.mana</string>
               </dict>
             </dict>
             <key>patterns</key>
