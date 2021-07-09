@@ -95,7 +95,7 @@
 			{
 				"language": "mana",
 				"scopeName": "source.mana",
-				"path": "./syntaxes/mana.tmLanguage"
+				"path": "./syntaxes/mana/grammars/mana.tmLanguage"
 			},
 			{
 				"language": "lay",
