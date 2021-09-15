@@ -102,7 +102,7 @@ repository:
     storage-modifier:
         patterns:
             - name: storage.modifier
-              match: '\b(gc|new|delete|public|protected|internal|private|static|readonly|const|extern)\b'
+              match: '\b(gc|new|delete|public|protected|abstract|interface|extends|internal|private|static|readonly|const|extern)\b'
     type-builtin:
         patterns:
           - include: "#types"
