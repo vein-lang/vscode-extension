@@ -2,3 +2,4 @@
 out/test/**
 out/**/*.map
 out/**/*.*
+node_modules

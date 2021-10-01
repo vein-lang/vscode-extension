@@ -84,7 +84,7 @@ export async function activate(context: vscode.ExtensionContext) {
                 ).then(
                     item => {
                         vscode.env.openExternal(vscode.Uri.parse(
-                            "https://github.com/microsoft/qsharp-compiler/issues/new?assignees=&labels=bug,Area-IDE&template=bug_report.md&title="
+                            "https://github.com/0xF6/mana_lang/issues/new?assignees=&labels=bug,area-lsp&template=bug_report.md&title="
                         ));
                     }
                 );
