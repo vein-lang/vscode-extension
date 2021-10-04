@@ -26,9 +26,9 @@ import { promisify } from 'util';
 namespace CommonPaths {
     export const storageFullPath = "O:/wave_vm/lsp/bin/Debug/net6.0";
     export const executableNames = {
-        darwin: "manalsp",
-        linux: "manalsp",
-        win32: "manalsp.exe",
+        darwin: "veinlsp",
+        linux: "veinlsp",
+        win32: "veinlsp.exe",
         aix: null,
         android: null,
         freebsd: null,
@@ -153,7 +153,7 @@ export class LanguageServer
         // if they set a path manually for the language server.
         //let versionCheck = false;
         let config = vscode.workspace.getConfiguration();
-        lsPath = config.get("manaDevkit.languageServerPath");
+        lsPath = config.get("veinDevkit.languageServerPath");
 
         // If lsPath is still undefined or null, then we didn't have a manual
         // path set up above.
@@ -171,7 +171,7 @@ export class LanguageServer
         // Since lsPath has been set unconditionally, we can now proceed to
         // check if it's valid or not.
         if (!await isPathExecutable(lsPath)) {
-            console.log(`[mana-lsp] "${lsPath}" is not executable. Proceed to download Q# language server.`)
+            console.log(`[vein-lsp] "${lsPath}" is not executable. Proceed to download Q# language server.`)
             // Language server didn't exist or wasn't executable.
             return false;
         }
@@ -182,7 +182,7 @@ export class LanguageServer
         try {
             response = await promisify(cp.exec)(`"${lsPath}" --version`);
         } catch (err) {
-            console.log(`[mana-lsp] Error while fetching LSP version: ${err}`);
+            console.log(`[vein-lsp] Error while fetching LSP version: ${err}`);
             throw err;
         }
 
@@ -196,7 +196,7 @@ export class LanguageServer
             throw new Error("Package info was undefined.");
         }
         if (versionCheck && info.version !== version) {
-            console.log(`[mana-lsp] Found version ${version}, expected version ${info.version}. Clearing cached version.`);
+            console.log(`[vein-lsp] Found version ${version}, expected version ${info.version}. Clearing cached version.`);
             //await this.clearCache();
             return false;
         }*/
@@ -210,7 +210,7 @@ export class LanguageServer
 
     /*private async setAsExecutable(path : string) : Promise<void> {
         let results = await promisify(cp.exec)(`chmod +x "${path}"`);
-        console.log(`[mana-lsp] Results from setting ${path} as executable:\n${results.stdout}\nstderr:\n${results.stderr}`);
+        console.log(`[vein-lsp] Results from setting ${path} as executable:\n${results.stdout}\nstderr:\n${results.stderr}`);
         return;
     }*/
 
@@ -242,17 +242,17 @@ export class LanguageServer
                 cwd:  this.rootFolder
             }
         ).on('error', err => {
-            console.log(`[mana-lsp] Child process spawn failed with ${err}.`);
+            console.log(`[vein-lsp] Child process spawn failed with ${err}.`);
             throw(err);
         }).on('exit', (exitCode, signal) => {
-            console.log(`[mana-lsp] manalsp exited with code ${exitCode} and signal ${signal}.`);
+            console.log(`[vein-lsp] veinlsp exited with code ${exitCode} and signal ${signal}.`);
         });
 
         process.stderr.on('data', (data) => {
-            console.error(`[mana-lsp] ${data}`);
+            console.error(`[vein-lsp] ${data}`);
         });
         process.stdout.on('data', (data) => {
-            console.log(`[mana-lsp] ${data}`);
+            console.log(`[vein-lsp] ${data}`);
         });
 
         return process;
@@ -273,21 +273,21 @@ export class LanguageServer
             // Begin by trying to find an appropriate port to pass along to the LSP executable.
             portfinder.getPortPromise({'port': 8091})
                 .then(port => {
-                    console.log(`[mana-lsp] Found port at ${port}.`);
+                    console.log(`[vein-lsp] Found port at ${port}.`);
                     // We found a port, so let's go along and use it to
                     // make a socket server.
                     return listenPromise(server, port, port + 10, '127.0.0.1');
                 })
                 .then((actualPort) => {
-                    console.log(`[mana-lsp] Successfully listening on port ${actualPort}, spawning server.`);
+                    console.log(`[vein-lsp] Successfully listening on port ${actualPort}, spawning server.`);
                     return this.spawnProcess(actualPort);
                 })
                 .then((childProcess) => {
-                    console.log(`[mana-lsp] started Mana Language Server as PID ${childProcess.pid}.`);
+                    console.log(`[vein-lsp] started vein Language Server as PID ${childProcess.pid}.`);
                 })
                 .catch(err => {
                     // Could not find a port...
-                    console.log(`[mana-lsp] Could not open an unused port: ${err}.`);
+                    console.log(`[vein-lsp] Could not open an unused port: ${err}.`);
                     reject(err);
                 });
 
@@ -303,7 +303,7 @@ export class LanguageServer
                 client: "VSCode",
             },
             documentSelector: [
-                {scheme: "file", language: "mana"}
+                {scheme: "file", language: "vein"}
             ],
             revealOutputChannelOn: RevealOutputChannelOn.Never,
 
@@ -332,8 +332,8 @@ export class LanguageServer
         };
 
         let client = new LanguageClient(
-            'mana',
-            'Mana Language Extension',
+            'vein',
+            'vein Language Extension',
             serverOptions,
             clientOptions
         );
@@ -347,7 +347,7 @@ export class LanguageServer
                     [State.Starting]: "starting",
                     [State.Stopped]: "stopped"
                 };
-                console.log(`[mana-lsp] State ${states[stateChangeEvent.oldState]} -> ${states[stateChangeEvent.newState]}`);
+                console.log(`[vein-lsp] State ${states[stateChangeEvent.oldState]} -> ${states[stateChangeEvent.newState]}`);
             })
         );
 
@@ -361,14 +361,14 @@ export class LanguageServer
             try {
                 throw new Error();
             } catch (err) {
-                console.log(`[mana-lsp] Error downloading language server: ${err}. ${retries} left.`);
+                console.log(`[vein-lsp] Error downloading language server: ${err}. ${retries} left.`);
                 if (retries > 0) {
                     return this.start(retries - 1);
                 } else {
                     let retryItem = "Try again";
                     let reportFeedbackItem = "Report feedback...";
                     switch (await vscode.window.showErrorMessage(
-                        "Could not download Mana language server.",
+                        "Could not download vein language server.",
                         retryItem, reportFeedbackItem
                     )) {
                         case retryItem:
@@ -376,7 +376,7 @@ export class LanguageServer
                             break;
                         case reportFeedbackItem:
                             vscode.env.openExternal(vscode.Uri.parse(
-                                "https://github.com/0xF6/mana_lang/issues/new?assignees=&labels=bug,Area-IDE&template=bug_report.md&title="
+                                "https://github.com/0xF6/vein_lang/issues/new?assignees=&labels=bug,Area-IDE&template=bug_report.md&title="
                             ));
                             return;
                             break;
@@ -395,6 +395,6 @@ export class LanguageServer
         let disposable = client.start();
         this.context.subscriptions.push(disposable);
 
-        console.log("[mana-lsp] Started LanguageClient object.");
+        console.log("[vein-lsp] Started LanguageClient object.");
     }
 }

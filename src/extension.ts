@@ -17,13 +17,8 @@ import { LanguageServer } from './languageServer';
     }
 }
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
 export async function activate(context: vscode.ExtensionContext) {
-
-    // Use the console to output diagnostic information (console.log) and errors (console.error)
-    // This line of code will only be executed once when your extension is activated
-    console.error('[mana-lsp] Activated!');
+    console.error('[vein-lsp] Activated!');
     process.env['VSCODE_LOG_LEVEL'] = 'trace';
 
 
@@ -76,7 +71,7 @@ export async function activate(context: vscode.ExtensionContext) {
         .start()
         .catch(
             err => {
-                console.log(`[mana-lsp] Language server failed to start: ${err}`);
+                console.log(`[vein-lsp] Language server failed to start: ${err}`);
                 let reportFeedbackItem = "Report feedback...";
                 vscode.window.showErrorMessage(
                     `Language server failed to start: ${err}`,
@@ -84,7 +79,7 @@ export async function activate(context: vscode.ExtensionContext) {
                 ).then(
                     item => {
                         vscode.env.openExternal(vscode.Uri.parse(
-                            "https://github.com/0xF6/mana_lang/issues/new?assignees=&labels=bug,area-lsp&template=bug_report.md&title="
+                            "https://github.com/vein-lang/vein/issues/new?assignees=&labels=bug,area-lsp&template=bug_report.md&title="
                         ));
                     }
                 );

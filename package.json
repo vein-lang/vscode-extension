@@ -1,7 +1,7 @@
 {
-	"name": "mana-language",
-	"displayName": "Mana Language",
-	"description": "Mana developmemnt environment",
+	"name": "vein-language",
+	"displayName": "vein Language",
+	"description": "vein developmemnt environment",
 	"version": "0.6.1326",
 	"icon": "images/icon.png",
 	"galleryBanner": {
@@ -11,12 +11,12 @@
 	"publisher": "rijndael",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/0xF6/mana_lang/issues"
+		"url": "https://github.com/vein-lang/vscode-extension/issues"
 	},
-	"homepage": "https://github.com/0xF6/mana_lang/",
+	"homepage": "https://github.com/vein-lang/vein",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/0xF6/mana_lang.git"
+		"url": "https://github.com/vein-lang/vscode-extension/.git"
 	},
 	"engines": {
 		"vscode": "^1.52.0"
@@ -32,7 +32,7 @@
 		"language"
 	],
 	"activationEvents": [
-		"onLanguage:mana",
+		"onLanguage:vein",
 		"onLanguage:lay",
 		"onCommand:extension.target.create",
 		"onCommand:extension.target.select",
@@ -41,15 +41,15 @@
 	],
 	"configuration": {
 		"type": "object",
-		"title": "Mana language server configuration",
+		"title": "vein language server configuration",
 		"properties": {
-			"manaDevKit.languageServerPath": {
+			"veinDevKit.languageServerPath": {
 				"scope": "machine",
 				"type": [
 					"string",
 					"null"
 				],
-				"description": "Path to the language server assembly for Mana.",
+				"description": "Path to the language server assembly for vein.",
 				"default": null
 			}
 		}
@@ -58,15 +58,15 @@
 	"contributes": {
 		"languages": [
 			{
-				"id": "mana",
+				"id": "vein",
 				"aliases": [
-					"Mana",
-					"mana"
+					"vein",
+					"vein"
 				],
 				"extensions": [
-					".mana"
+					".vein"
 				],
-				"configuration": "./mana.configuration.json"
+				"configuration": "./vein.configuration.json"
 			},
 			{
 				"id": "lay",
@@ -77,36 +77,36 @@
 				],
 				"extensions": [
 					".lay",
-					".mana.il"
+					".vein.il"
 				],
 				"configuration": "./lay.configuration.json"
 			},
 			{
 				"id": "xml",
 				"aliases": [
-					"waproj"
+					"vproj"
 				],
 				"extensions": [
-					".waproj"
+					".vproj"
 				]
 			}
 		],
 		"grammars": [
 			{
-				"language": "mana",
-				"scopeName": "source.mana",
-				"path": "./syntaxes/mana/grammars/mana.tmLanguage"
+				"language": "vein",
+				"scopeName": "source.vein",
+				"path": "./syntaxes/vein/grammars/vein.tmLanguage"
 			},
 			{
 				"language": "lay",
-				"scopeName": "source.mana.il",
+				"scopeName": "source.vein.il",
 				"path": "./syntaxes/lay.tmLanguage"
 			}
 		],
 		"commands": [
 			{
-				"command": "editor.action.shutdownManaLSP",
-				"title": "Stop Mana LSP"
+				"command": "editor.action.shutdownveinLSP",
+				"title": "Stop vein LSP"
 			}
 		]
 	},
