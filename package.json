@@ -1,8 +1,8 @@
 {
 	"name": "vein-language",
-	"displayName": "vein Language",
-	"description": "vein developmemnt environment",
-	"version": "0.6.1326",
+	"displayName": "Vein Language",
+	"description": "Vein developmemnt environment",
+	"version": "0.9.1326",
 	"icon": "images/icon.png",
 	"galleryBanner": {
 		"color": "#18c7b1",
@@ -41,7 +41,7 @@
 	],
 	"configuration": {
 		"type": "object",
-		"title": "vein language server configuration",
+		"title": "Мein language server configuration",
 		"properties": {
 			"veinDevKit.languageServerPath": {
 				"scope": "machine",
@@ -60,8 +60,7 @@
 			{
 				"id": "vein",
 				"aliases": [
-					"vein",
-					"vein"
+					"Vein Lang"
 				],
 				"extensions": [
 					".vein"
@@ -71,9 +70,7 @@
 			{
 				"id": "lay",
 				"aliases": [
-					"Lay",
-					"lay",
-					"mil"
+					"Intermediate Language"
 				],
 				"extensions": [
 					".lay",
@@ -84,7 +81,7 @@
 			{
 				"id": "xml",
 				"aliases": [
-					"vproj"
+					"XML"
 				],
 				"extensions": [
 					".vproj"
