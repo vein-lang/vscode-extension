@@ -58,7 +58,7 @@
 	"contributes": {
 		"languages": [
 			{
-				"id": "vein",
+				"id": "Vein Lang",
 				"aliases": [
 					"Vein Lang"
 				],
@@ -90,7 +90,7 @@
 		],
 		"grammars": [
 			{
-				"language": "vein",
+				"language": "Vein Lang",
 				"scopeName": "source.vein",
 				"path": "./syntaxes/vein/grammars/vein.tmLanguage"
 			},
