@@ -40,7 +40,7 @@
 		"onCommand:extension.target.select",
 		"onCommand:extension.target.run",
 		"onCommand:extension.target.build",
-        "onCommand:editor.action.vein-lang.status"
+		"onCommand:editor.action.vein-lang.status"
 	],
 	"configuration": {
 		"type": "object",
