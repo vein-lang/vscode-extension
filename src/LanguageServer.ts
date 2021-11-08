@@ -24,7 +24,7 @@ import { promisify } from 'util';
 
 
 namespace CommonPaths {
-    export const storageFullPath = "O:/wave_vm/lsp/bin/Debug/net6.0";
+    export const storageRelativePath = "server";
     export const executableNames = {
         darwin: "veinlsp",
         linux: "veinlsp",
@@ -164,7 +164,7 @@ export class LanguageServer
             if (exeName === null) {
                 throw new Error(`Unsupported platform: ${os.platform()}`);
             }
-            lsPath = path.join(CommonPaths.storageFullPath, exeName);
+            lsPath = path.join(this.context.globalStorageUri.path, CommonPaths.storageRelativePath, exeName);
             //versionCheck = true;
         }
 

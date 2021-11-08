@@ -1,0 +1,8 @@
+.vscode/**
+.vscode-test/**
+src/**
+**/.gitignore
+tsconfig.json
+tslint.json
+**/*.v.template
+syntaxes/vein/node_modules
