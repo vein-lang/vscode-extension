@@ -88,9 +88,9 @@
 				"configuration": "./lay.configuration.json"
 			},
 			{
-				"id": "xml",
+				"id": "yaml",
 				"aliases": [
-					"XML"
+					"YAML"
 				],
 				"extensions": [
 					".vproj"
