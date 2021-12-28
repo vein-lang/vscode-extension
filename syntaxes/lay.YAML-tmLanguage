@@ -4,6 +4,8 @@ fileTypes:
     - lay
 name: "vein IL Language"
 patterns:
+    - include: "#ret-type"
+    - include: "#arg-this"
     - include: "#comment"
     - include: "#preprocessor"
     - include: "#operators"
@@ -17,7 +19,34 @@ patterns:
     - include: "#types"
     - include: "#literal"
     - include: "#opcodes-literal"
+    - include: "#locals_init"
+    - include: "#global-type-path"
 repository:
+    ret-type:
+        match: '\-\>\s?(\w+)'
+        captures:
+            "1": 
+              name: support.type.vein
+        name: meta.return.type.vein
+    arg-this:
+        name: support.type.vein
+        match: "\<this\>"
+    global-type-path:
+        begin: '\:\:(\w+\/)+(\w+)'
+        beginCaptures:
+            "2": 
+              name: support.type.vein
+        end: '\;'
+        name: meta.global.type.path.vein
+    locals_init:
+        begin: '\[(.)\]:\s?(\w+)\,'
+        beginCaptures:
+            "1": 
+              name: constant.numeric.decimal.vein
+            "2": 
+              name: support.type.vein
+        end: '(?=(?:\/|\/\*))|\}(?=\n)?|(?<!\\)(?=\n)'
+        name: meta.locals.init.vein
     declarations:
         patterns:
             - include: "#type-declarations"
@@ -96,19 +125,21 @@ repository:
     keywords:
         patterns:
             - name: keyword.control.vein
-              match: '\.\b(dep|string|global|this|table|s|t|f|method|base|using|field|auto|const|body|as|namespace|module|class)\b'
+              match: '\.\b(dep|string|aspect|override|special|global|this|table|s|t|f|method|base|using|field|auto|const|body|as|namespace|module|class)\b'
             - name: keyword.control.core.vein
               match: '\.\b(size|maxstack|locals)\b'
+            - name: keyword.control.core.vein
+              match: '\@\b(effect)\b'
     storage-modifier:
         patterns:
             - name: storage.modifier
-              match: '\b(gc|new|delete|public|protected|abstract|interface|extends|internal|private|static|readonly|const|extern)\b'
+              match: '\b(gc|new|delete|\<this\>|aspect|override|special|global|public|protected|abstract|interface|extends|internal|private|static|readonly|const|extern)\b'
     type-builtin:
         patterns:
           - include: "#types"
     types:
         patterns:
-            - match: '(?i)(as|byte|float|double|bool|string|void|([ui|i](nt16|nt32|nt64)))\b'
+            - match: '(?i)(as|byte|float|\<this\>|double|bool|string|void|([ui|i](nt16|nt32|nt64)))\b'
               name: support.type.vein
             - match: '\b%?(invalid)\b'
               name: invalid.deprecated

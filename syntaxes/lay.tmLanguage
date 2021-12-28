@@ -16,6 +16,14 @@
     <array>
       <dict>
         <key>include</key>
+        <string>#ret-type</string>
+      </dict>
+      <dict>
+        <key>include</key>
+        <string>#arg-this</string>
+      </dict>
+      <dict>
+        <key>include</key>
         <string>#comment</string>
       </dict>
       <dict>
@@ -66,9 +74,78 @@
         <key>include</key>
         <string>#opcodes-literal</string>
       </dict>
+      <dict>
+        <key>include</key>
+        <string>#locals_init</string>
+      </dict>
+      <dict>
+        <key>include</key>
+        <string>#global-type-path</string>
+      </dict>
     </array>
     <key>repository</key>
     <dict>
+      <key>ret-type</key>
+      <dict>
+        <key>match</key>
+        <string>\-\&gt;\s?(\w+)</string>
+        <key>captures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>support.type.vein</string>
+          </dict>
+        </dict>
+        <key>name</key>
+        <string>meta.return.type.vein</string>
+      </dict>
+      <key>arg-this</key>
+      <dict>
+        <key>name</key>
+        <string>support.type.vein</string>
+        <key>match</key>
+        <string>\&lt;this\&gt;</string>
+      </dict>
+      <key>global-type-path</key>
+      <dict>
+        <key>begin</key>
+        <string>\:\:(\w+\/)+(\w+)</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>support.type.vein</string>
+          </dict>
+        </dict>
+        <key>end</key>
+        <string>\;</string>
+        <key>name</key>
+        <string>meta.global.type.path.vein</string>
+      </dict>
+      <key>locals_init</key>
+      <dict>
+        <key>begin</key>
+        <string>\[(.)\]:\s?(\w+)\,</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>constant.numeric.decimal.vein</string>
+          </dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>support.type.vein</string>
+          </dict>
+        </dict>
+        <key>end</key>
+        <string>(?=(?:\/|\/\*))|\}(?=\n)?|(?&lt;!\\)(?=\n)</string>
+        <key>name</key>
+        <string>meta.locals.init.vein</string>
+      </dict>
       <key>declarations</key>
       <dict>
         <key>patterns</key>
@@ -318,13 +395,19 @@
             <key>name</key>
             <string>keyword.control.vein</string>
             <key>match</key>
-            <string>\.\b(dep|string|global|this|table|s|t|f|method|base|using|field|auto|const|body|as|namespace|module|class)\b</string>
+            <string>\.\b(dep|string|aspect|override|special|global|this|table|s|t|f|method|base|using|field|auto|const|body|as|namespace|module|class)\b</string>
           </dict>
           <dict>
             <key>name</key>
             <string>keyword.control.core.vein</string>
             <key>match</key>
             <string>\.\b(size|maxstack|locals)\b</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>keyword.control.core.vein</string>
+            <key>match</key>
+            <string>\@\b(effect)\b</string>
           </dict>
         </array>
       </dict>
@@ -336,7 +419,7 @@
             <key>name</key>
             <string>storage.modifier</string>
             <key>match</key>
-            <string>\b(gc|new|delete|public|protected|abstract|interface|extends|internal|private|static|readonly|const|extern)\b</string>
+            <string>\b(gc|new|delete|\&lt;this\&gt;|aspect|override|special|global|public|protected|abstract|interface|extends|internal|private|static|readonly|const|extern)\b</string>
           </dict>
         </array>
       </dict>
@@ -356,7 +439,7 @@
         <array>
           <dict>
             <key>match</key>
-            <string>(?i)(as|byte|float|double|bool|string|void|([ui|i](nt16|nt32|nt64)))\b</string>
+            <string>(?i)(as|byte|float|\&lt;this\&gt;|double|bool|string|void|([ui|i](nt16|nt32|nt64)))\b</string>
             <key>name</key>
             <string>support.type.vein</string>
           </dict>
