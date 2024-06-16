@@ -4,7 +4,7 @@
 	"preview": true,
 	"displayName": "Vein Language",
 	"description": "Development Kit for Vein Language",
-	"version": "0.9.1400",
+	"version": "0.90.49",
 	"icon": "images/icon.png",
 	"galleryBanner": {
 		"color": "#eff1f3",
@@ -20,7 +20,7 @@
 		"url": "https://github.com/vein-lang/vscode-extension.git"
 	},
 	"engines": {
-		"vscode": "^1.52.0"
+		"vscode": "^1.82.0"
 	},
 	"categories": [
 		"Programming Languages"
@@ -33,14 +33,11 @@
 		"language"
 	],
 	"activationEvents": [
-		"onLanguage:Vein Lang",
 		"onLanguage:vein",
-		"onLanguage:lay",
 		"onCommand:extension.target.create",
 		"onCommand:extension.target.select",
 		"onCommand:extension.target.run",
-		"onCommand:extension.target.build",
-		"onCommand:editor.action.vein-lang.status"
+		"onCommand:extension.target.build"
 	],
 	"configuration": {
 		"type": "object",
