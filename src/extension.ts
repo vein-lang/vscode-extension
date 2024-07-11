@@ -1,77 +1,77 @@
+import { workspace, ExtensionContext, window } from 'vscode';
 import * as path from 'path';
-import { workspace, ExtensionContext } from 'vscode';
 import {
     LanguageClient,
     LanguageClientOptions,
     ServerOptions,
+    Trace,
     TransportKind,
-    StreamInfo
+    createServerPipeTransport
 } from 'vscode-languageclient/node';
-import { WebSocket }  from 'ws';
-import { Duplex } from 'stream';
 
-class WebSocketStream extends Duplex {
-    private socket: WebSocket;
-
-    constructor(socket: WebSocket) {
-        super();
-        this.socket = socket;
-
-        this.socket.on('message', (data) => {
-            console.log(`Received message: ${data}`);
-            this.push(data);
-        });
-
-        this.socket.on('close', () => {
-            this.push(null);
-        });
-    }
-
-    _read(size: number) {}
-
-    _write(chunk: any, encoding: string, callback: () => void) {
-        console.log(`Sending message: ${chunk}`);
-        this.socket.send(chunk, callback);
-    }
-}
 let client: LanguageClient;
 
-export function activate(context: ExtensionContext) {
+export async  function activate(context: ExtensionContext) {
+    /*
+    let serverModule = context.asAbsolutePath(path.join('out', 'server.js'));
+    let debugOptions = { execArgv: ['--nolazy', '--inspect=6009'] };
     const serverOptions: ServerOptions = () => {
-        const socket = new WebSocket('ws://localhost:8080');
+        const pipePath = getPipePath(pipeName);
+        const socket = net.connect(pipePath);
+        
+        socket.on('connect', () => {
+            console.log('Connected to server!');
+        });
 
-        return new Promise<StreamInfo>((resolve, reject) => {
-            socket.on('open', () => {
-                const stream = new WebSocketStream(socket);
-                resolve({
-                    reader: stream,
-                    writer: stream
-                });
-            });
-
-            socket.on('error', (error) => {
-                reject(error);
-            });
+        return Promise.resolve({
+            reader: socket,
+            writer: socket
         });
     };
-
-    let clientOptions: LanguageClientOptions = {
-        documentSelector: [{ scheme: 'file', language: 'vein' }],
-        synchronize: {
-            fileEvents: workspace.createFileSystemWatcher('**/*.vein')
+    let serverOptions: ServerOptions = {
+        run: { module: serverModule, transport: TransportKind.ipc },
+        debug: {
+            module: serverModule,
+            transport: TransportKind.ipc,
+            options: debugOptions
         }
     };
 
-    client = new LanguageClient(
-        'languageServerExample',
-        'Language Server Example',
-        serverOptions,
-        clientOptions
-    );
+    */
+    const pipeName = 'vein_language_pipe';
+    let time = 100;
+    let serverOptions = async () => {
+         await new Promise((r) => setTimeout(r, time));
+         time = 10000;
+         const [reader, writer] = createServerPipeTransport("\\\\.\\pipe\\" + pipeName);
+         return {
+            reader,
+            writer,
+         };
+     };
 
-    client.start();
+    const clientOptions: LanguageClientOptions = {
+        documentSelector: [
+            { scheme: 'file', language: 'vein' },
+            { scheme: 'untitled', language: 'vein' },
+            { pattern: "**/*.vein", },
+            { pattern: "**/*.vein", language: 'vein' }
+        ],
+        synchronize: {
+            fileEvents: workspace.createFileSystemWatcher('**/*.vein')
+        },
+        outputChannel: window.createOutputChannel('Vein Language Server')
+    };
+
+    client = new LanguageClient("vein-language", "Vein Language", serverOptions, clientOptions);
+    client.registerProposedFeatures();
+    client.setTrace(Trace.Verbose);
+    await client.start();
 }
-
+function getPipePath(pipeName: string): string {
+    const pipePrefix = '\\\\.\\pipe\\';
+    return path.join(pipePrefix, pipeName);
+}
 export function deactivate(): Thenable<void> | undefined {
     if (!client) {
         return undefined;

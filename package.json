@@ -4,7 +4,7 @@
 	"preview": true,
 	"displayName": "Vein Language",
 	"description": "Development Kit for Vein Language",
-	"version": "0.90.76",
+	"version": "0.90.94",
 	"icon": "images/icon.png",
 	"galleryBanner": {
 		"color": "#eff1f3",
@@ -33,8 +33,6 @@
 		"language"
 	],
 	"activationEvents": [
-		"onLanguage:vein",
-		"onLanguage:lay",
 		"onCommand:extension.target.create",
 		"onCommand:extension.target.select",
 		"onCommand:extension.target.run",
@@ -44,6 +42,12 @@
 		"type": "object",
 		"title": "VeinLang extensions configuration",
 		"properties": {
+			"vein-language.maxNumberOfProblems": {
+				"scope": "resource",
+				"type": "number",
+				"default": 100,
+				"description": "Controls the maximum number of problems produced by the server."
+			},
 			"vein-language.languageServerPath": {
 				"scope": "machine",
 				"type": [
@@ -65,7 +69,7 @@
 	"contributes": {
 		"languages": [
 			{
-				"id": "Vein Lang",
+				"id": "vein",
 				"aliases": [
 					"Vein Lang"
 				],
@@ -77,35 +81,12 @@
 					"light": "images/icon.dark.png",
 					"dark": "images/icon.dark.png"
 				}
-			},
-			{
-				"id": "lay",
-				"aliases": [
-					"Intermediate Language"
-				],
-				"extensions": [
-					".lay",
-					".vein.il"
-				],
-				"configuration": "./lay.configuration.json",
-				"icon": {
-					"light": "images/icon.dark.lay.png",
-					"dark": "images/icon.dark.lay.png"
-				}
-			},
-			{
-				"id": "yaml",
-				"aliases": [
-					"YAML"
-				],
-				"extensions": [
-					".vproj"
-				]
 			}
+			
 		],
 		"grammars": [
 			{
-				"language": "Vein Lang",
+				"language": "vein",
 				"scopeName": "source.vein",
 				"path": "./syntaxes/vein/grammars/vein.tmLanguage"
 			},
