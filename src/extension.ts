@@ -8,6 +8,7 @@ import {
     TransportKind,
     createServerPipeTransport
 } from 'vscode-languageclient/node';
+import { connect } from "net";
 
 let client: LanguageClient;
 
@@ -38,29 +39,39 @@ export async  function activate(context: ExtensionContext) {
     };
 
     */
-    const pipeName = 'vein_language_pipe';
-    let time = 100;
+
+    const port = 7777;
+
+    const serverOptions: ServerOptions = () => {
+        const socket = connect(port, '127.0.0.1');
+        return Promise.resolve({
+            reader: socket,
+            writer: socket
+        });
+    };
+
+
+    /*const pipeName = 'vein_language_pipe';
+    let time = 0;
     let serverOptions = async () => {
-         await new Promise((r) => setTimeout(r, time));
-         time = 10000;
-         const [reader, writer] = createServerPipeTransport("\\\\.\\pipe\\" + pipeName);
-         return {
+        if (time > 0)
+            await new Promise((r) => setTimeout(r, time));
+        time = 10000;
+        const [reader, writer] = createServerPipeTransport("\\\\.\\pipe\\" + pipeName);
+        return {
             reader,
             writer,
-         };
+        };
      };
-
+*/
     const clientOptions: LanguageClientOptions = {
         documentSelector: [
             { scheme: 'file', language: 'vein' },
-            { scheme: 'untitled', language: 'vein' },
-            { pattern: "**/*.vein", },
-            { pattern: "**/*.vein", language: 'vein' }
+            { scheme: 'untitled', language: 'vein' }
         ],
         synchronize: {
             fileEvents: workspace.createFileSystemWatcher('**/*.vein')
-        },
-        outputChannel: window.createOutputChannel('Vein Language Server')
+        }
     };
 
     client = new LanguageClient("vein-language", "Vein Language", serverOptions, clientOptions);
