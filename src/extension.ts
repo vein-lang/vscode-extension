@@ -1,74 +1,80 @@
-'use strict';
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
-import { LanguageServer } from './languageServer';
-import { registerCommand} from './commands';
+import * as path from 'path';
+import { workspace, ExtensionContext } from 'vscode';
+import {
+    LanguageClient,
+    LanguageClientOptions,
+    ServerOptions,
+    TransportKind,
+    StreamInfo
+} from 'vscode-languageclient/node';
+import { WebSocket }  from 'ws';
+import { Duplex } from 'stream';
 
-/**
- * Returns the root folder for the current workspace.
- */
- function findRootFolder() : string {
-    // FIXME: handle multiple workspace folders here.
-    let workspaceFolders = vscode.workspace.workspaceFolders;
-    if (workspaceFolders) {
-        return workspaceFolders[0].uri.fsPath;
-    } else {
-        return '';
+class WebSocketStream extends Duplex {
+    private socket: WebSocket;
+
+    constructor(socket: WebSocket) {
+        super();
+        this.socket = socket;
+
+        this.socket.on('message', (data) => {
+            console.log(`Received message: ${data}`);
+            this.push(data);
+        });
+
+        this.socket.on('close', () => {
+            this.push(null);
+        });
+    }
+
+    _read(size: number) {}
+
+    _write(chunk: any, encoding: string, callback: () => void) {
+        console.log(`Sending message: ${chunk}`);
+        this.socket.send(chunk, callback);
     }
 }
+let client: LanguageClient;
 
-export async function activate(context: vscode.ExtensionContext) {
-    console.error('[vein-lsp] Activated!');
-    process.env['VSCODE_LOG_LEVEL'] = 'trace';
+export function activate(context: ExtensionContext) {
+    const serverOptions: ServerOptions = () => {
+        const socket = new WebSocket('ws://localhost:8080');
 
-    registerCommand(
-        context,
-        "editor.action.vein-lang.status",
-        () => {
-            vscode.window.showInformationMessage(
-                `Status is ok.`
-            );
+        return new Promise<StreamInfo>((resolve, reject) => {
+            socket.on('open', () => {
+                const stream = new WebSocketStream(socket);
+                resolve({
+                    reader: stream,
+                    writer: stream
+                });
+            });
+
+            socket.on('error', (error) => {
+                reject(error);
+            });
+        });
+    };
+
+    let clientOptions: LanguageClientOptions = {
+        documentSelector: [{ scheme: 'file', language: 'vein' }],
+        synchronize: {
+            fileEvents: workspace.createFileSystemWatcher('**/*.vein')
         }
+    };
+
+    client = new LanguageClient(
+        'languageServerExample',
+        'Language Server Example',
+        serverOptions,
+        clientOptions
     );
 
-
-    let config = vscode.workspace.getConfiguration();
-    let isDisabled = config.get("veinDevkit.languageServer.disabled", true);
-
-    let rootFolder = findRootFolder();
-
-    if (isDisabled)
-    {
-        vscode.window.showInformationMessage(
-            `Language server for Vein Lang has disabled in this version.`
-        );
-    }
-    else
-    {
-        // Start the language server client.
-        let languageServer = new LanguageServer(context, rootFolder);
-        await languageServer
-            .start()
-            .catch(
-                err => {
-                    console.log(`[vein-lsp] Language server failed to start: ${err}`);
-                    let reportFeedbackItem = "Report feedback...";
-                    vscode.window.showErrorMessage(
-                        `Language server failed to start: ${err}`,
-                        reportFeedbackItem
-                    ).then(
-                        item => {
-                            vscode.env.openExternal(vscode.Uri.parse(
-                                "https://github.com/vein-lang/vein/issues/new?assignees=&labels=bug,area-lsp&template=bug_report.md&title="
-                            ));
-                        }
-                    );
-                }
-            );
-    }
+    client.start();
 }
 
-// this method is called when your extension is deactivated
-export function deactivate() {
+export function deactivate(): Thenable<void> | undefined {
+    if (!client) {
+        return undefined;
+    }
+    return client.stop();
 }
