@@ -4,7 +4,7 @@
 	"preview": true,
 	"displayName": "Vein Language",
 	"description": "Development Kit for Vein Language",
-	"version": "0.90.110",
+	"version": "0.90.111",
 	"icon": "images/icon.png",
 	"galleryBanner": {
 		"color": "#eff1f3",
@@ -80,6 +80,20 @@
 				"icon": {
 					"light": "images/icon.dark.png",
 					"dark": "images/icon.dark.png"
+				}
+			},
+			{
+				"id": "lay",
+				"aliases": [
+					"Intermediate language"
+				],
+				"extensions": [
+					".lay"
+				],
+				"configuration": "./vein.configuration.json",
+				"icon": {
+					"light": "images/icon.dark.lay.png",
+					"dark": "images/icon.dark.lay.png"
 				}
 			}
 			
