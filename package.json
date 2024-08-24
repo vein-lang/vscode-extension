@@ -1,160 +1,169 @@
 {
-	"name": "devkit",
-	"publisher": "veinlang",
-	"preview": true,
-	"displayName": "Vein Language",
-	"description": "Development Kit for Vein Language",
-	"version": "0.90.111",
-	"icon": "images/icon.png",
-	"galleryBanner": {
-		"color": "#eff1f3",
-		"theme": "light"
-	},
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/vein-lang/vscode-extension/issues"
-	},
-	"homepage": "https://github.com/vein-lang/vein",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/vein-lang/vscode-extension.git"
-	},
-	"engines": {
-		"vscode": "^1.91.0"
-	},
-	"categories": [
-		"Programming Languages"
-	],
-	"keywords": [
-		"virtual-machine",
-		"cli",
-		"intermediate-language",
-		"il",
-		"language"
-	],
-	"activationEvents": [
-		"onCommand:extension.target.create",
-		"onCommand:extension.target.select",
-		"onCommand:extension.target.run",
-		"onCommand:extension.target.build"
-	],
-	"configuration": {
-		"type": "object",
-		"title": "VeinLang extensions configuration",
-		"properties": {
-			"vein-language.maxNumberOfProblems": {
-				"scope": "resource",
-				"type": "number",
-				"default": 100,
-				"description": "Controls the maximum number of problems produced by the server."
-			},
-			"vein-language.languageServerPath": {
-				"scope": "machine",
-				"type": [
-					"string",
-					"null"
-				],
-				"description": "Path to the language server assembly for vein.",
-				"default": null
-			},
-			"vein-language.languageServer.disabled": {
-				"scope": "machine",
-				"description": "Is disable Vein Lang server?",
-				"type": "boolean",
-				"default": true
-			}
-		}
-	},
-	"main": "./out/extension",
-	"contributes": {
-		"languages": [
-			{
-				"id": "vein",
-				"aliases": [
-					"Vein Lang"
-				],
-				"extensions": [
-					".vein"
-				],
-				"configuration": "./vein.configuration.json",
-				"icon": {
-					"light": "images/icon.dark.png",
-					"dark": "images/icon.dark.png"
-				}
-			},
-			{
-				"id": "lay",
-				"aliases": [
-					"Intermediate language"
-				],
-				"extensions": [
-					".lay"
-				],
-				"configuration": "./vein.configuration.json",
-				"icon": {
-					"light": "images/icon.dark.lay.png",
-					"dark": "images/icon.dark.lay.png"
-				}
-			}
-			
-		],
-		"grammars": [
-			{
-				"language": "vein",
-				"scopeName": "source.vein",
-				"path": "./syntaxes/vein/grammars/vein.tmLanguage"
-			},
-			{
-				"language": "lay",
-				"scopeName": "source.vein.il",
-				"path": "./syntaxes/lay.tmLanguage"
-			}
-		],
-		"commands": [
-			{
-				"command": "editor.action.vein-lang.status",
-				"title": "Get status of VeinLang extensions."
-			}
-		]
-	},
-	"scripts": {
-		"build": "bun esbuild.mts --production",
-		"compile": "tsc -watch -p ./",
-		"test": "node ./node_modules/vscode/bin/test",
-		"watch": "tsc -watch -p ./",
-		"pre-publish": "vsce package"
-	},
-	"dependencies": {
-		"@types/fs-extra": "^11.0.4",
-		"decompress-zip": "^0.3.3",
-		"fs-extra": "^11.2.0",
-		"lodash": "^4.17.21",
-		"portfinder": "1.0.32",
-		"request": "^2.88.0",
-		"semver": "^7.6.2",
-		"tmp": "0.2.3",
-		"ts-optchain": "^0.1.7",
-		"vscode-extension-telemetry": "0.4.5",
-		"vscode-languageclient": "^9.0.1",
-		"which": "4.0.0",
-		"ws": "^8.18.0",
-		"yosay": "^3.0.0"
-	},
-	"devDependencies": {
-		"@types/mocha": "^10.0.7",
-		"@types/node": "^20.14.10",
-		"@types/request": "^2.48.12",
-		"@types/semver": "^7.5.8",
-		"@types/tmp": "0.2.6",
-		"@types/vscode": "^1.91.0",
-		"@types/which": "3.0.4",
-		"@types/ws": "^8.5.10",
-		"@types/yosay": "2.0.3",
-		"esbuild": "^0.23.0",
-		"mocha": "^10.6.0",
-		"tslint": "^6.1.3",
-		"typescript": "^5.5.3",
-		"unplugin-purge-polyfills": "^0.0.4",
-		"vsce": "^2.15.0"
-	}
+  "name": "devkit",
+  "publisher": "veinlang",
+  "preview": true,
+  "displayName": "Vein Language",
+  "description": "Development Kit for Vein Language",
+  "version": "1.30.137",
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#eff1f3",
+    "theme": "light"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vein-lang/vscode-extension/issues"
+  },
+  "homepage": "https://github.com/vein-lang/vein",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vein-lang/vscode-extension.git"
+  },
+  "engines": {
+    "vscode": "^1.91.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "virtual-machine",
+    "cli",
+    "intermediate-language",
+    "il",
+    "language"
+  ],
+  "activationEvents": [
+    "onCommand:extension.target.create",
+    "onCommand:extension.target.select",
+    "onCommand:extension.target.run",
+    "onCommand:extension.target.build",
+    "onCommand:vein.build"
+  ],
+  "configuration": {
+    "type": "object",
+    "title": "VeinLang extensions configuration",
+    "properties": {
+      "vein-language.maxNumberOfProblems": {
+        "scope": "resource",
+        "type": "number",
+        "default": 100,
+        "description": "Controls the maximum number of problems produced by the server."
+      },
+      "vein-language.languageServerPath": {
+        "scope": "machine",
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "Path to the language server assembly for vein.",
+        "default": null
+      },
+      "vein-language.languageServer.disabled": {
+        "scope": "machine",
+        "description": "Is disable Vein Lang server?",
+        "type": "boolean",
+        "default": true
+      }
+    }
+  },
+  "main": "./out/extension",
+  "contributes": {
+    "languages": [
+      {
+        "id": "vein",
+        "aliases": [
+          "Vein Lang"
+        ],
+        "extensions": [
+          ".vein"
+        ],
+        "configuration": "./vein.configuration.json",
+        "icon": {
+          "light": "images/icon.dark.png",
+          "dark": "images/icon.dark.png"
+        }
+      },
+      {
+        "id": "lay",
+        "aliases": [
+          "Intermediate language"
+        ],
+        "extensions": [
+          ".lay"
+        ],
+        "configuration": "./vein.configuration.json",
+        "icon": {
+          "light": "images/icon.dark.lay.png",
+          "dark": "images/icon.dark.lay.png"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "vein",
+        "scopeName": "source.vein",
+        "path": "./syntaxes/vein/grammars/vein.tmLanguage"
+      },
+      {
+        "language": "lay",
+        "scopeName": "source.vein.il",
+        "path": "./syntaxes/lay.tmLanguage"
+      }
+    ],
+    "commands": [
+      {
+        "command": "vein.build",
+        "title": "Vein: Build Project",
+        "category": "Vein"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "vein.build",
+        "key": "ctrl+shift+b",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "bun esbuild.mts --production",
+    "compile": "tsc -watch -p ./",
+    "test": "node ./node_modules/vscode/bin/test",
+    "watch": "tsc -watch -p ./",
+    "pre-publish": "vsce package"
+  },
+  "dependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "decompress-zip": "^0.3.3",
+    "fs-extra": "^11.2.0",
+    "get-port": "^7.1.0",
+    "lodash": "^4.17.21",
+    "portfinder": "1.0.32",
+    "request": "^2.88.0",
+    "semver": "^7.6.2",
+    "tmp": "0.2.3",
+    "ts-optchain": "^0.1.7",
+    "vscode-extension-telemetry": "0.4.5",
+    "vscode-languageclient": "^9.0.1",
+    "which": "4.0.0",
+    "ws": "^8.18.0",
+    "yosay": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.7",
+    "@types/node": "^20.14.10",
+    "@types/request": "^2.48.12",
+    "@types/semver": "^7.5.8",
+    "@types/tmp": "0.2.6",
+    "@types/vscode": "^1.91.0",
+    "@types/which": "3.0.4",
+    "@types/ws": "^8.5.10",
+    "@types/yosay": "2.0.3",
+    "esbuild": "^0.23.0",
+    "mocha": "^10.6.0",
+    "tslint": "^6.1.3",
+    "typescript": "^5.5.3",
+    "unplugin-purge-polyfills": "^0.0.4",
+    "vsce": "^2.15.0"
+  }
 }
